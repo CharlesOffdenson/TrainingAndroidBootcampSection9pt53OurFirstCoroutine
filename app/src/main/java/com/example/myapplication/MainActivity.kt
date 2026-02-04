@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,9 +38,9 @@ class MainActivity : AppCompatActivity() {
             tvCount.text = count++.toString()
         }
         btnDownloadUserData.setOnClickListener {
-
-            CoroutineScope(Dispatchers.IO)
-            downloadUserData()
+            CoroutineScope(Dispatchers.IO).launch{
+                downloadUserData()
+            }
         }
     }
     private fun downloadUserData() {
